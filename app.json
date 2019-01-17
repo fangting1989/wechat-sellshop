@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/main/components/index/index",
+    "pages/main/components/userself/userself",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FFDA7F",
+    "navigationBarTitleText": "首页",
+    "navigationBarTextStyle": "#182635",
+    "backgroundColor": "#F3F3F3"
+  },
+  "tabBar": {
+    "color": "#C1C1C1",
+    "selectedColor": "#182635",
+    "borderStyle": "#1F2233",
+    "backgroundColor": "#F3F3F3",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/index/index",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-sel.png"
+      },
+      {
+        "text": "登记",
+        "pagePath": "pages/main/components/userself/userself",
+        "iconPath": "images/edit.png",
+        "selectedIconPath": "images/edit-sel.png"
+      }
+    ]
+  }
+}
