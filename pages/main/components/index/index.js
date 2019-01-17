@@ -62,5 +62,12 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  ItemClick:function(){
+    wx.navigateTo({
+      url: '../../../prod/components/prod/prod?id=1'
+    })
   }
+
+  
 })

@@ -1,1 +1,7 @@
 /* pages/main/components/userself/userself.wxss */
+.order-content{
+  margin: 15rpx;
+}
+.order-see-all{
+  float:right;
+}

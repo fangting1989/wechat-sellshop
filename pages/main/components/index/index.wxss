@@ -1,1 +1,11 @@
 /* pages/main/components/index/index.wxss */
+.item-content{
+  width:100%;
+}
+.pro-item{
+  width:50%;
+  display: inline-block;
+}
+.pro-content{
+  margin:10px;
+}

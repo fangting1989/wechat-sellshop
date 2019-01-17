@@ -1,3 +1,79 @@
+<view>
+  <swiper class="swiper" autoplay="true" interval="2000" >
+    <swiper-item>
+      <image src="/images/timg.jpg"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/images/timg.jpg"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/images/timg.jpg"></image>
+    </swiper-item>
+  </swiper>
+</view>
+
+<view class="item-content">
+      <view class="pro-item" bindtap="ItemClick">
+        <view class="pro-content">
+          <image src="/images/prod/timg.jpg" style='width:100%;' mode="widthFix"></image>
+          <view>
+            <view>苹果</view>
+            <view>￥20.00</view>
+          </view>
+        </view>
+      </view>
+
+       <view class="pro-item">
+        <view class="pro-content">
+          <image src="/images/prod/timg.jpg" style='width:100%;' mode="widthFix"></image>
+          <view>
+            <view>苹果</view>
+            <view>￥20.00</view>
+          </view>
+        </view>
+      </view>
+
+      <view class="pro-item">
+        <view class="pro-content">
+          <image src="/images/prod/timg.jpg"  style='width:100%;' mode="widthFix"></image>
+          <view>
+            <view>苹果</view>
+            <view>￥20.00</view>
+          </view>
+        </view>
+      </view>
+
+      <view class="pro-item">
+        <view class="pro-content">
+          <image src="/images/prod/timg.jpg"  style='width:100%;' mode="widthFix"></image>
+          <view>
+            <view>苹果</view>
+            <view>￥20.00</view>
+          </view>
+        </view>
+      </view>
+
+      <view class="pro-item">
+        <view class="pro-content">
+          <image src="/images/prod/timg.jpg"  style='width:100%;' mode="widthFix"></image>
+          <view>
+            <view>苹果</view>
+            <view>￥20.00</view>
+          </view>
+        </view>
+      </view>
+     
+    </view>
+<van-tabs active="{{ active }}">
+  <van-tab title="标签 1">
+    
+  </van-tab>
+  <van-tab title="标签 2">内容 2</van-tab>
+  <van-tab title="标签 3">内容 3</van-tab>
+  <van-tab title="标签 4">内容 4</van-tab>
+  <van-tab title="标签 5">内容 5</van-tab>
+  <van-tab title="标签 6">内容 6</van-tab>
+</van-tabs>
 <view>123</view>
 <van-button type="default">默认按钮</van-button>
 <van-swipe-cell right-width="{{ 65 }}" left-width="{{ 65 }}">

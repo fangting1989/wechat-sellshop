@@ -1,2 +1,48 @@
 <!--pages/main/components/userself/userself.wxml-->
-<text>pages/main/components/userself/userself.wxml</text>
+<view>
+  头像位置
+</view>
+
+<view>
+  <view class="order-content">
+    <view class="tit">我的订单<view class="order-see-all">查看全部订单></view></view>
+    <van-row>
+      <van-col span="6">
+        <van-icon name="close" />
+        <view>待发货</view>
+      </van-col>
+      <van-col span="6">
+        <van-icon name="close" />
+        <view>待发货</view>
+      </van-col>
+      <van-col span="6">
+        <van-icon name="close" />
+        <view>待发货</view>
+      </van-col>
+      <van-col span="6">
+        <van-icon name="close" />
+        <view>待发货</view>
+      </van-col>
+    </van-row>
+  </view>
+
+  <view class="nav-content">
+    <van-row>
+      <van-col span="8">
+        <van-icon name="close" />
+        <view>待发货</view>
+      </van-col>
+
+      <van-col span="8">
+        <van-icon name="close" />
+        <view>待发货</view>
+      </van-col>
+
+      <van-col span="8">
+        <van-icon name="close" />
+        <view>待发货</view>
+      </van-col>
+    </van-row>
+  </view>
+</view>
+
