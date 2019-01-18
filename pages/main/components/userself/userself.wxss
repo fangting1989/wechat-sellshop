@@ -1,7 +1,82 @@
 /* pages/main/components/userself/userself.wxss */
+.container{
+  min-height: 100%;
+  overflow: hidden;
+  overflow-y: hidden;
+}
+.userinfo {
+	display: flex;
+	flex-direction: column;
+	padding: 50rpx 0;
+	align-items: center;
+	background: #fff;
+  width: 750rpx;
+}
+
+.userinfo-avatar {
+	width: 160rpx;
+	height: 160rpx;
+	margin: 20rpx;
+	border-radius: 50%;
+}
+
+.userinfo-nickname {
+  margin-top: 20rpx;
+  color: #000;
+}
+
+.nav-item{
+  margin:10px;
+  border-radius: 5px;
+  background: #fff;
+  padding:5px;
+}
+.nav-item .nav-head{
+  padding:10px 5px;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+
+.nav-item .van-row{
+  text-align: center;
+  margin:10px;
+}
+.nav-item .van-row .van-icon{
+  width:32px;
+  height:32px;
+  margin-bottom: 5px;
+  font-size: 36px;
+}
+
+
+.tophead{
+  height: 200px;
+  background: #fff;
+  text-align: center;
+}
+.tophead .img{
+  height:80px;
+  width:80px;
+}
+
 .order-content{
   margin: 15rpx;
 }
 .order-see-all{
   float:right;
+}
+
+.kf_button{
+  background: transparent;
+  border:0px;
+  font-size: 14px;
+  padding:0px;
+  margin: 0px;
+  color:inherit;
+  line-height:inherit;
+}
+.kf_button view{
+  display: inline-block;
+}
+button[class="kf_button"]::after {
+  border: 0;
 }

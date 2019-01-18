@@ -1,18 +1,76 @@
-<view>
-  <swiper class="swiper" autoplay="true" interval="2000" >
-    <swiper-item>
-      <image src="/images/timg.jpg"></image>
-    </swiper-item>
-    <swiper-item>
-      <image src="/images/timg.jpg"></image>
-    </swiper-item>
-    <swiper-item>
-      <image src="/images/timg.jpg"></image>
-    </swiper-item>
-  </swiper>
-</view>
 
-<view class="item-content">
+<view class="container">
+   <view class="swiper-container">
+        <swiper class="swiper_box" 
+                    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange">
+            <block wx:for="{{banners}}" wx:key="id">
+                <swiper-item>
+                    <image bindtap="tapBanner" data-id="{{item.businessId}}" src="{{item.picUrl}}" class="slide-image" width="750rpx" height="562.5rpx"/>
+                </swiper-item>
+            </block>
+        </swiper>
+        <view class="dots">  
+            <block wx:for="{{banners}}" wx:key="unique">  
+                <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>  
+            </block>  
+        </view>  
+   </view>
+   <view class="search-view" style="background:{{ scrollTop === 0 ?'-webkit-linear-gradient(top, rgba(247,212,127, 1), rgba(247,212,127, 0.3))' :( scrollTop<200 ? 'rgba(247,212,127,'+(scrollTop/400+0.3) +')' : 'rgba(247,212,127,1)')  }} ">
+      <view class="search-content">
+        <image src="/images/search-pic.png" class="search-icon" />
+        <input placeholder="请输入搜索内容" class="search-input" maxlength="30" confirm-type="搜索" bindinput='listenerSearchInput' bindconfirm='toSearch'>
+        </input>
+        <button class='search-btn' bindtap="toSearch">搜索
+        </button>
+      </view>
+    </view>
+</view>
+<van-tabs active="{{ active }}">
+  <van-tab title="标签 1">
+    <view class="goods-container">
+        <view class="goods-box" wx:for-items="{{goods}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
+           <view class="img-box">
+              <image src="{{item.pic}}" class="image" mode="aspectFill" lazy-load="true"/>
+           </view>
+           <view class="goods-title">{{item.name}}</view>
+           <view style='display:flex;'>
+            <view class="goods-price">¥ {{item.minPrice}}</view>
+            <view wx:if="{{item.originalPrice && item.originalPrice > 0}}" class="goods-price" style='color:#aaa;text-decoration:line-through'>¥ {{item.originalPrice}}</view>
+           </view>           
+        </view>
+    </view>
+    <view hidden="{{loadingMoreHidden ? true : false}}" class="no-more-goods">没有更多啦</view>
+
+
+    <!-- <view class="item-content">
+      <view class="pro-item" bindtap="ItemClick">
+        <view class="pro-content">
+          <image src="/images/prod/timg.jpg" style='width:100%;' mode="widthFix"></image>
+          <view>
+            <view>苹果</view>
+            <view>￥20.00</view>
+          </view>
+        </view>
+      </view>
+
+       <view class="pro-item">
+        <view class="pro-content">
+          <image src="/images/prod/timg.jpg" style='width:100%;' mode="widthFix"></image>
+          <view>
+            <view>苹果</view>
+            <view>￥20.00</view>
+          </view>
+        </view>
+      </view>
+    </view> -->
+  </van-tab>
+  <van-tab title="标签 2">内容 2</van-tab>
+  <van-tab title="标签 3">内容 3</van-tab>
+  <van-tab title="标签 4">内容 4</van-tab>
+  <van-tab title="标签 5">内容 5</van-tab>
+  <van-tab title="标签 6">内容 6</van-tab>
+</van-tabs>
+<!-- <view class="item-content">
       <view class="pro-item" bindtap="ItemClick">
         <view class="pro-content">
           <image src="/images/prod/timg.jpg" style='width:100%;' mode="widthFix"></image>
@@ -64,16 +122,7 @@
       </view>
      
     </view>
-<van-tabs active="{{ active }}">
-  <van-tab title="标签 1">
-    
-  </van-tab>
-  <van-tab title="标签 2">内容 2</van-tab>
-  <van-tab title="标签 3">内容 3</van-tab>
-  <van-tab title="标签 4">内容 4</van-tab>
-  <van-tab title="标签 5">内容 5</van-tab>
-  <van-tab title="标签 6">内容 6</van-tab>
-</van-tabs>
+
 <view>123</view>
 <van-button type="default">默认按钮</van-button>
 <van-swipe-cell right-width="{{ 65 }}" left-width="{{ 65 }}">
@@ -82,4 +131,4 @@
     <van-cell title="单元格" value="内容" />
   </van-cell-group>
   <view slot="right">删除</view>
-</van-swipe-cell>
+</van-swipe-cell> -->

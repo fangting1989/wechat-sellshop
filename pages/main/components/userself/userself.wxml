@@ -1,48 +1,62 @@
 <!--pages/main/components/userself/userself.wxml-->
-<view>
-  头像位置
+<view class="container">
+	<view class="userinfo">
+		<image wx:if="{{userInfo && userInfo.avatarUrl}}" class="userinfo-avatar" src="{{ userInfo.avatarUrl }}" background-size="cover"></image>
+		<text class="userinfo-nickname">{{ userInfo.nickName }}</text>
+	</view>
 </view>
-
-<view>
-  <view class="order-content">
-    <view class="tit">我的订单<view class="order-see-all">查看全部订单></view></view>
+<view class="nav">
+  <view class="nav-item">
+    <view class="nav-head">
+      我的订单<view class="order-see-all"><text decode='true' bindtap="allorder">查看全部订单&gt;</text></view>
+    </view>
     <van-row>
-      <van-col span="6">
-        <van-icon name="close" />
+      <van-col span="6" bindtap="prepayorder">
+        <van-icon name="pending-payment" />
+        <view>待付款</view>
+      </van-col>
+      <van-col span="6" bindtap="presendorder">
+        <van-icon name="exchange" />
         <view>待发货</view>
       </van-col>
-      <van-col span="6">
-        <van-icon name="close" />
-        <view>待发货</view>
+      <van-col span="6"  bindtap="prereceiveorder">
+        <van-icon name="logistics" />
+        <view>待收货</view>
       </van-col>
-      <van-col span="6">
-        <van-icon name="close" />
-        <view>待发货</view>
-      </van-col>
-      <van-col span="6">
-        <van-icon name="close" />
-        <view>待发货</view>
+      <van-col span="6" bindtap="finishorder">
+        <van-icon name="description" />
+        <view>已完成</view>
       </van-col>
     </van-row>
   </view>
 
-  <view class="nav-content">
+  <view class="nav-item">
     <van-row>
-      <van-col span="8">
+      <van-col span="6">
         <van-icon name="close" />
-        <view>待发货</view>
+        <view>我的信息</view>
       </van-col>
-
-      <van-col span="8">
+      <van-col span="6" bindtap="addressmanager">
         <van-icon name="close" />
-        <view>待发货</view>
+        <view>地址管理</view>
       </van-col>
-
-      <van-col span="8">
+      <van-col span="6">
         <van-icon name="close" />
-        <view>待发货</view>
+        <view>积分管理</view>
+      </van-col>
+      <van-col span="6" bindtap="contactbus">
+        <button class="kf_button" open-type="contact" session-from="weapp">
+          <van-icon name="close" />
+          <view>联系商家</view>
+        </button>
+      </van-col>
+    </van-row>
+
+    <van-row>
+      <van-col span="6">
+        <van-icon name="close" />
+        <view>问题处理</view>
       </van-col>
     </van-row>
   </view>
 </view>
-

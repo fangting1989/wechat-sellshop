@@ -5,7 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    userInfo:{
+      nickName:'张三',
+      avatarUrl:'/images/headimg/132.jpg'
+    }
   },
 
   /**
@@ -62,5 +65,45 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  //地址管理
+  addressmanager:function(){
+    wx.navigateTo({
+      url: '../../../self/components/select-address/select-address'
+    })
+  },
+  //全部订单
+  allorder:function(){
+    wx.navigateTo({
+      url: '../../../self/components/order-list/orderlist'
+    })
+
+    // orderstatus
+  },
+  //"待付款", "待发货", "待收货", "已完成"
+  prepayorder:function(){
+    wx.navigateTo({
+      url: '../../../self/components/order-list/orderlist?orderstatus=0'
+    })
+  },
+  presendorder:function(){
+    wx.navigateTo({
+      url: '../../../self/components/order-list/orderlist?orderstatus=1'
+    })
+  },
+  prereceiveorder:function(){
+    wx.navigateTo({
+      url: '../../../self/components/order-list/orderlist?orderstatus=2'
+    })
+  },
+  finishorder:function(){
+    wx.navigateTo({
+      url: '../../../self/components/order-list/orderlist?orderstatus=4'
+    })
+  },
+  //联系商户
+  contactbus:function(){
+    
   }
+
 })

@@ -1,5 +1,10 @@
 <!--pages/main/components/cart/cart.wxml-->
-<text>购物车页面</text>
+<import src="../../../template/template-cart/template-cart.wxml"/>
+
+<view class="container">
+     <template is="{{goodsList.list.length > 0 ? 'cart-goods-list' : 'no-goods'}}" data="{{...goodsList}}"></template>
+</view>
+
 <van-submit-bar
   price="{{ 3050 }}"
   button-text="提交订单"
