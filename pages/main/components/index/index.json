@@ -5,6 +5,7 @@
     "van-cell": "../../../../miniprogram_npm/vant-weapp/cell/index",
     "van-button": "../../../../miniprogram_npm/vant-weapp/button/index",
     "van-tabs":"../../../../miniprogram_npm/vant-weapp/tabs/index",
-    "van-tab": "../../../../miniprogram_npm/vant-weapp/tab/index"
+    "van-tab": "../../../../miniprogram_npm/vant-weapp/tab/index",
+    "van-search": "../../../../miniprogram_npm/vant-weapp/search/index"
   }
 }

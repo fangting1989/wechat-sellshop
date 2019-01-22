@@ -8,7 +8,8 @@
     "pages/self/components/self-msg/self-msg",
     "pages/self/components/select-address/select-address",
     "pages/self/components/add-address/add-address",
-    "pages/self/components/order-list/orderlist"
+    "pages/self/components/order-list/orderlist",
+    "pages/self/components/mcharts/mcharts"
   ],
   "window": {
     "backgroundTextStyle": "light",

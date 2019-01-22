@@ -1,4 +1,8 @@
 // pages/main/components/index/index.js
+
+const dataServices = require('../../services/dataServices.js')
+var _ = require('../../../../utils/underscore.modified.js');
+const WebConfig = require('../../../../utils/config.js')
 Page({
 
   /**
@@ -18,13 +22,15 @@ Page({
     goods: [],
     scrollTop: 0,
     loadingMoreHidden: true,
-
+    
     hasNoCoupons: true,
     coupons: [],
     searchInput: '',
 
-    curPage: 1,
-    pageSize: 20
+    active: 0,
+    pagenum: 1,
+    pagesize: 20,
+    prodtypeArray: [],
   },
 
   /**
@@ -38,19 +44,72 @@ Page({
     self.setData({
       banners: self.data.banners
     });
-
-    //商品数据
-    self.data.goods = [
-      { name: '苹果', minPrice: '20.00', originalPrice: '38.00', pic:'/images/prod/timg.jpg'},
-      { name: '苹果', minPrice: '20.00', originalPrice: '38.00', pic: '/images/prod/timg.jpg' },
-      { name: '苹果', minPrice: '20.00', originalPrice: '38.00', pic: '/images/prod/timg.jpg' },
-      { name: '苹果', minPrice: '20.00', originalPrice: '38.00', pic: '/images/prod/timg.jpg' },
-      { name: '苹果', minPrice: '20.00', originalPrice: '38.00', pic: '/images/prod/timg.jpg' },
-      { name: '苹果', minPrice: '20.00', originalPrice: '38.00', pic: '/images/prod/timg.jpg' }
-    ]
     self.setData({
-      goods:self.data.goods,
       loadingMoreHidden:false
+    })
+
+    //加载类别
+    this.loadProducttype()
+  },
+
+  loadData:function(){
+   
+
+  },
+  //加载类别
+  loadProducttype:function(){
+    var self = this;
+    var postData = {
+      pagesize: this.data.pagesize,
+      pagenum: this.data.pagenum,
+      enterpriseid: getApp().globalData.enterpriseid,
+      pid:-1,
+      isvalid:1
+    }
+    dataServices.Producttype(postData).then(function(ret){
+      if(ret){
+        self.setData({
+          prodtypeArray :ret.data
+        })
+        //加载对应的商品
+        console.log(self.data.prodtypeArray)
+        if (self.data.prodtypeArray.length > 0){
+          self.loadProduct(self.data.prodtypeArray[0])
+        }
+      }
+    })
+  },
+  loadProduct:function(typeitem){
+    var self = this;
+    var postData = {
+      pagesize: this.data.pagesize,
+      pagenum: this.data.pagenum,
+      enterpriseid: getApp().globalData.enterpriseid,
+      producttype: typeitem.objectTypeID,
+      productvalid:1,
+      pid: -1
+    }
+    dataServices.findProduct(postData).then(function (ret) {
+      if (ret) {
+        //设置价格
+        _.each(ret.data,function(item){
+          if (item.listproductunit.length == 0){
+            item.nowprice = item.productcurprice
+          }else{
+            item.nowprice = item.listproductunit[0].currpice
+          }
+          //图片路径
+          item.pic = WebConfig.BaseUrl + WebConfig.RequestUrl.fileuploadpath + item.productimage
+        })
+        console.log(ret)
+        self.setData({
+          goods:ret.data
+        })
+      }else{
+        self.setData({
+          goods: []
+        })
+      }
     })
   },
 
@@ -106,9 +165,22 @@ Page({
 
   },
   //商品详情
-  toDetailsTap:function(){
+  toDetailsTap: function (event){
+    var DataItem = event.currentTarget.dataset.databind;
+    console.log(DataItem)
+    wx.setStorage({
+        key: 'prodinfo',
+        data: DataItem
+      })
+
     wx.navigateTo({
-      url: '../../../prod/components/prod/prod?id=1'
+      url: '../../../prod/components/prod/prod'
     })
+  },
+  onChange_prodtype: function (e){
+    var self = this;
+    if (this.data.prodtypeArray.length > e.detail.index){
+      self.loadProduct(this.data.prodtypeArray[e.detail.index])
+    }
   }
 })

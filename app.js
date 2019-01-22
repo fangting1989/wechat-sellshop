@@ -34,6 +34,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    enterpriseid:'MkM1MzMzMzA5RDk1Q0Y0RQ=='
   }
 })

@@ -104,6 +104,12 @@ Page({
   //联系商户
   contactbus:function(){
     
+  },
+  //测试图标
+  testchartsclick:function(){
+    wx.navigateTo({
+      url: '../../../self/components/mcharts/mcharts'
+    })
   }
 
 })

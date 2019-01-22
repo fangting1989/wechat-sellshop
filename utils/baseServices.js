@@ -1,9 +1,9 @@
 const WebConfig = require('./config.js')
 var Promise = require("./bluebird.min.js")
 module.exports = {
-  RequestData:function(methodurl, data, method) {
+  RequestData:function(methodurl, data, method,exturl) {
     return new Promise(function (resolve, reject) {
-      let url = WebConfig.BaseUrl + methodurl
+      let url = WebConfig.BaseUrl + exturl + methodurl
       wx.showLoading({title:"加载数据中...",mask:false})
       wx.request({
         url: url, //仅为示例，并非真实的接口地址
@@ -20,12 +20,12 @@ module.exports = {
               duration: 2000
             })
             if (res.data.errid == -200){
-              resolve(res.data.data)
+              resolve(res.data)
             }else{
               resolve(null)
             }
           }else{
-            resolve(res.data.data)
+            resolve(res.data)
           }
         },
         fail: function (err) {
@@ -42,9 +42,9 @@ module.exports = {
       })
     })
   },
-  RequestBaseData: function (methodurl, data, method) {
+  RequestBaseData: function (methodurl, data, method, exturl) {
     return new Promise(function (resolve, reject) {
-      let url = WebConfig.BaseUrl + methodurl
+      let url = WebConfig.BaseUrl + exturl + methodurl
       wx.showLoading({ title: "加载数据中...", mask: false })
       wx.request({
         url: url, //仅为示例，并非真实的接口地址
@@ -70,7 +70,7 @@ module.exports = {
       })
     })
   },
-  Request: function (url, data, method) {
+  Request: function (url, data, method, exturl) {
     return new Promise(function (resolve, reject) {
       wx.showLoading({ title: "加载数据中...", mask: false })
       wx.request({
@@ -97,9 +97,9 @@ module.exports = {
       })
     })
   },
-  RequestImage: function (methodurl, data, method) {
+  RequestImage: function (methodurl, data, method, exturl) {
     return new Promise(function (resolve, reject) {
-      let url = WebConfig.BaseUrl + methodurl
+      let url = WebConfig.BaseUrl + exturl + methodurl
       wx.showLoading({ title: "加载数据中...", mask: false })
       wx.request({
         url: url, //仅为示例，并非真实的接口地址

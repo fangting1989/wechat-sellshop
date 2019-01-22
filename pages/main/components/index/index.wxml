@@ -16,59 +16,39 @@
         </view>  
    </view>
    <view class="search-view" style="background:{{ scrollTop === 0 ?'-webkit-linear-gradient(top, rgba(247,212,127, 1), rgba(247,212,127, 0.3))' :( scrollTop<200 ? 'rgba(247,212,127,'+(scrollTop/400+0.3) +')' : 'rgba(247,212,127,1)')  }} ">
-      <view class="search-content">
+      <!-- <view class="search-content">
         <image src="/images/search-pic.png" class="search-icon" />
         <input placeholder="请输入搜索内容" class="search-input" maxlength="30" confirm-type="搜索" bindinput='listenerSearchInput' bindconfirm='toSearch'>
         </input>
         <button class='search-btn' bindtap="toSearch">搜索
         </button>
-      </view>
+      </view> -->
+      <van-search
+  value="{{ value }}"
+  placeholder="请输入搜索关键词"
+  use-action-slot
+  bind:search="onSearch"
+>
+  <view slot="action" bind:tap="onSearch">搜索</view>
+</van-search>
     </view>
 </view>
-<van-tabs active="{{ active }}">
-  <van-tab title="标签 1">
+<van-tabs active="{{ active }}" bind:change="onChange_prodtype">
+  <van-tab title="{{typeitem.typeName}}" wx:for="{{prodtypeArray}}" wx:key="{{index}}" wx:for-item="typeitem">
     <view class="goods-container">
-        <view class="goods-box" wx:for-items="{{goods}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
+        <view class="goods-box" wx:for-items="{{goods}}" wx:key="{{index}}" bindtap="toDetailsTap" data-databind="{{item}}">
            <view class="img-box">
               <image src="{{item.pic}}" class="image" mode="aspectFill" lazy-load="true"/>
            </view>
-           <view class="goods-title">{{item.name}}</view>
+           <view class="goods-title">{{item.productname}}</view>
            <view style='display:flex;'>
-            <view class="goods-price">¥ {{item.minPrice}}</view>
+            <view class="goods-price">¥ {{item.nowprice}}</view>
             <view wx:if="{{item.originalPrice && item.originalPrice > 0}}" class="goods-price" style='color:#aaa;text-decoration:line-through'>¥ {{item.originalPrice}}</view>
            </view>           
         </view>
     </view>
     <view hidden="{{loadingMoreHidden ? true : false}}" class="no-more-goods">没有更多啦</view>
-
-
-    <!-- <view class="item-content">
-      <view class="pro-item" bindtap="ItemClick">
-        <view class="pro-content">
-          <image src="/images/prod/timg.jpg" style='width:100%;' mode="widthFix"></image>
-          <view>
-            <view>苹果</view>
-            <view>￥20.00</view>
-          </view>
-        </view>
-      </view>
-
-       <view class="pro-item">
-        <view class="pro-content">
-          <image src="/images/prod/timg.jpg" style='width:100%;' mode="widthFix"></image>
-          <view>
-            <view>苹果</view>
-            <view>￥20.00</view>
-          </view>
-        </view>
-      </view>
-    </view> -->
   </van-tab>
-  <van-tab title="标签 2">内容 2</van-tab>
-  <van-tab title="标签 3">内容 3</van-tab>
-  <van-tab title="标签 4">内容 4</van-tab>
-  <van-tab title="标签 5">内容 5</van-tab>
-  <van-tab title="标签 6">内容 6</van-tab>
 </van-tabs>
 <!-- <view class="item-content">
       <view class="pro-item" bindtap="ItemClick">
