@@ -85,6 +85,7 @@
     icon="cart-o"
     text="购物车"
     bind:click="gocart"
+    info="{{cartCount}}"
   />
   <van-goods-action-button
     text="加入购物车"

@@ -1,6 +1,7 @@
 // pages/self/components/add-address/add-address.js
 var address = require('../../../../utils/city.js')
-
+const dataServices = require('../../services/dataServices.js')
+import Toast from '../../../../miniprogram_npm/vant-weapp/toast/toast.js';
 Page({
 
   /**
@@ -8,8 +9,9 @@ Page({
    */
   data: {
     model:{
-
+    
     },
+    userData:null,
     value: [0, 0, 0],
     addressMenuIsShow: false,
     provinces: [],
@@ -25,6 +27,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //设置用户信息
+    this.data.userData = getApp().globalData.userData
     //加载动画
     var animation = wx.createAnimation({
       duration: 500,
@@ -96,7 +100,6 @@ Page({
     if (that.data.addressMenuIsShow) {
       return
     }
-    console.log("1-2-3-4-5-65-6")
     that.startAddressAnimation(true)
   },
   // 执行动画
@@ -160,5 +163,61 @@ Page({
       })
     }
   },
-  //-----------------------------------------
+  //--------属性赋值---------------------------------
+  onChange_linkman:function(e){
+    this.data.model.linkman = e.detail
+    this.setData({
+      model:this.data.model
+    })
+  },
+  onChange_linktel:function(e){
+    this.data.model.linktel = e.detail
+    this.setData({
+      model: this.data.model
+    })
+  },
+  onChange_address:function(e){
+    this.data.model.address = e.detail
+    this.setData({
+      model: this.data.model
+    })
+  },
+  onChange_District:function(e){
+    //区域
+    console.log(e)
+  },
+  onChange_zipcode:function(e){
+    this.data.model.zipcode = e.detail
+    this.setData({
+      model: this.data.model
+    })
+  },
+  //------------------------------
+  SaveClick:function(){
+    //拆分
+    var dataArray = this.data.areaInfo.split(',')
+    if(dataArray.length >=1){
+      this.data.model.province = dataArray[0]
+    }
+    if (dataArray.length >= 2) {
+      this.data.model.city = dataArray[1]
+    }
+    if (dataArray.length >= 3) {
+      this.data.model.contry = dataArray[2]
+    }
+    var postData = {
+      ...this.data.model,
+      keycode: this.data.userData.keycode,
+      enterpriseid: getApp().globalData.enterpriseid
+    }
+    console.log(postData)
+    dataServices.insertAddress(postData).then(ret=>{
+      if(ret){
+        Toast.success("地址保存成功!")
+        console.log(ret)
+        //关闭退回
+        setTimeout(function () { wx.navigateBack() }, 800)
+      }
+    })
+  }
 })

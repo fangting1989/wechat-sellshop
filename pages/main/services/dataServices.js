@@ -8,4 +8,7 @@ module.exports = {
   findProduct: function (data) {
     return baseServices.RequestData("TProductApiService/find", data, "GET", WebConfig.RequestUrl.sellsiteservice)
   },
+  CreateOrderByCart:function(data){
+    return baseServices.RequestData("TOrderApiService/createorder", data, "POST", WebConfig.RequestUrl.sellsiteservice)
+  }
 }

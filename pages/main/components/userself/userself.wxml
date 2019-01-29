@@ -2,7 +2,10 @@
 <view class="container">
 	<view class="userinfo">
 		<image wx:if="{{userInfo && userInfo.avatarUrl}}" class="userinfo-avatar" src="{{ userInfo.avatarUrl }}" background-size="cover"></image>
-		<text class="userinfo-nickname">{{ userInfo.nickName }}</text>
+		<text  wx:if="{{!showAuthButton}}" class="userinfo-nickname">{{ userData.memName || userInfo.nickName }}</text>
+    <button wx:if="{{showAuthButton}}" class='bottom btn-auth' type='warn' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="authButtonClick">
+        授权登录
+    </button>
 	</view>
 </view>
 <view class="nav">

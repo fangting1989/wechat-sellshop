@@ -80,3 +80,8 @@
 button[class="kf_button"]::after {
   border: 0;
 }
+.btn-auth{
+  font-size: 12px;
+  padding:0px 10px;
+  
+}

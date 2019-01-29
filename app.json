@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/authorize/authorize",
     "pages/main/components/index/index",
     "pages/main/components/userself/userself",
     "pages/logs/logs",
@@ -9,7 +10,9 @@
     "pages/self/components/select-address/select-address",
     "pages/self/components/add-address/add-address",
     "pages/self/components/order-list/orderlist",
-    "pages/self/components/mcharts/mcharts"
+    "pages/self/components/mcharts/mcharts",
+    "pages/prod/components/payorder/payorder",
+    "pages/prod/components/select-address/select-address"
   ],
   "window": {
     "backgroundTextStyle": "light",

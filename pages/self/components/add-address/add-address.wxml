@@ -1,18 +1,21 @@
+<van-toast id="van-toast" />
 <van-cell-group>
   <van-field
-      value="{{ model.username }}"
+      value="{{model.linkman}}"
       required
       clearable
       label="联系人"
       placeholder="联系人"
+      bind:change="onChange_linkman"
     />
 
     <van-field
-      value="{{ model.phone }}"
+      value="{{ model.linktel }}"
       required
       clearable
       label="手机号"
       placeholder="手机号"
+      bind:change="onChange_linktel"
     />
 
     <van-field
@@ -23,6 +26,7 @@
       icon="location-o"
       disabled
       bind:click-icon="selectDistrict"
+      bind:change="onChange_District"
     />
 
     <van-field
@@ -30,15 +34,20 @@
       required
       clearable
       label="详细地址"
+      bind:change="onChange_address"
     />
      <van-field
       value="{{ model.zipcode }}"
-      required
       clearable
       label="邮政编码"
       placeholder=""
+      bind:change="onChange_zipcode"
     />
 </van-cell-group>
+
+<view class="u-btn">
+      <button type="warn" class="btn-save" bindtap="add" bindtap="SaveClick">确定</button>
+</view>
 
 
 

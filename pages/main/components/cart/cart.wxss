@@ -1,5 +1,5 @@
 /* pages/main/components/cart/cart.wxss */
-@import "../../../template/template-cart/template-cart.wxss";
+/* @import "../../../template/template-cart/template-cart.wxss"; */
 
 page{
   min-height: 100%;
@@ -13,4 +13,138 @@ page{
   position: fixed;
   bottom: 0;
   left: 0;
+}
+
+.container{
+    justify-content:initial;
+}
+.title-box{
+    width: 100%;
+    padding-top: 330rpx;
+    text-align: center;
+    font-size:28rpx;
+    color:#999;
+    background: url(https://cdn.it120.cc/images/weappshop/icon-cart.png) no-repeat center 205rpx;
+    background-size: 100rpx auto;
+    margin-bottom: 50rpx;
+}
+.to-index-btn{
+  display: inline-block;
+  color:#fff;
+  background:#e64340;
+  border-radius:6px;
+  width:300rpx;
+  height:70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  font-size:28rpx;
+}
+.list-top{
+    width: 100%;
+    height: 88rpx;
+    line-height: 88rpx;
+    box-sizing: border-box;
+    display: flex;
+    justify-content:space-between;
+    padding: 0 30rpx;
+    font-size: 28rpx;
+    align-items: center;
+}
+.list-top .label{
+    color: #000;
+}
+.list-top .edit-btn{
+    color: #999;
+    height: 100%;
+}
+
+
+.goodsList{
+    width: 100%;
+    background-color: #fff;
+    padding-bottom: 100rpx;
+}
+.a-gooods{
+    width: 100%;
+    overflow: hidden;
+}
+.a-goods-conts{
+    display: flex;
+    justify-content:space-between;
+    padding-left: 30rpx;
+    width: 870rpx;
+    box-sizing: border-box;
+    transition: margin-left 0.2s ease-in-out;
+  
+}
+.a-goods-conts.active{
+ 
+}
+.goods-info{
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content:space-between;
+    padding: 30rpx 0 30rpx 10rpx; 
+    width: 720rpx;
+    box-sizing: border-box;
+}
+.goods-info .checkbox{
+  display: flex;
+  align-items: center;
+}
+.goods-info .img-box{
+    width: 160rpx;
+    height:160rpx;
+    overflow: hidden;
+    margin-right: 20rpx;
+    background-color: #d8d8d8;
+}
+.goods-info .text-box{
+    width: 440rpx;
+    position: relative;
+}
+.goods-info .text-box .goods-title{
+    font-size: 28rpx;
+    color:#000;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 10rpx 20rpx 5rpx 0;
+}
+.goods-info .text-box .goods-label{
+    font-size: 26rpx;
+    color:#999;
+    height: 38rpx;
+    line-height: 38rpx;
+    margin: 8rpx 0 25rpx 0;
+}
+.goods-info .text-box .goods-price{
+    font-size: 26rpx;
+    color:#e64340;
+}
+.goods-info .text-box .goods-price .stepper{
+  float:right;
+  margin-right:20rpx;
+}
+
+.goods-info .img-box .img{
+    width: 160rpx;
+    height:160rpx;
+}
+
+
+.goodsList .delete-btn{
+  width:65px;
+  line-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:#e64340;
+  font-size: 24rpx;
+  color: #fff;
+  height:inherit;
+}
+.allCheck{
+  margin-left:40rpx;
 }

@@ -3,6 +3,7 @@
 const dataServices = require('../../services/dataServices.js')
 var _ = require('../../../../utils/underscore.modified.js');
 const WebConfig = require('../../../../utils/config.js')
+
 Page({
 
   /**
@@ -72,7 +73,6 @@ Page({
           prodtypeArray :ret.data
         })
         //加载对应的商品
-        console.log(self.data.prodtypeArray)
         if (self.data.prodtypeArray.length > 0){
           self.loadProduct(self.data.prodtypeArray[0])
         }
@@ -101,7 +101,6 @@ Page({
           //图片路径
           item.pic = WebConfig.BaseUrl + WebConfig.RequestUrl.fileuploadpath + item.productimage
         })
-        console.log(ret)
         self.setData({
           goods:ret.data
         })
@@ -167,7 +166,6 @@ Page({
   //商品详情
   toDetailsTap: function (event){
     var DataItem = event.currentTarget.dataset.databind;
-    console.log(DataItem)
     wx.setStorage({
         key: 'prodinfo',
         data: DataItem

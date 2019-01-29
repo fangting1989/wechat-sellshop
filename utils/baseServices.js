@@ -13,6 +13,14 @@ module.exports = {
           'content-type': 'application/json' // 默认值
         },
         success: function (res) {
+          if(res.statusCode == 404){
+            wx.showToast({
+              title: '找不到服务',
+              icon: 'none',
+              duration: 2000
+            })
+            resolve(null)
+          }
           if (res.data && res.data.errid < 0){
             wx.showToast({
               title: res.data.errmsg,
@@ -54,6 +62,15 @@ module.exports = {
           'content-type': 'application/json' // 默认值
         },
         success: function (res) {
+          if (res.statusCode == 404) {
+            wx.showToast({
+              title: '找不到服务',
+              icon: 'none',
+              duration: 2000
+            })
+            resolve(null)
+          }
+
           resolve(res.data)
         },
         fail: function (err) {
@@ -81,6 +98,14 @@ module.exports = {
           'content-type': 'application/json' // 默认值
         },
         success: function (res) {
+          if (res.statusCode == 404) {
+            wx.showToast({
+              title: '找不到服务',
+              icon: 'none',
+              duration: 2000
+            })
+            resolve(null)
+          }
           resolve(res.data)
         },
         fail: function (err) {

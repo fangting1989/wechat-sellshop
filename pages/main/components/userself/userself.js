@@ -6,16 +6,31 @@ Page({
    */
   data: {
     userInfo:{
-      nickName:'张三',
-      avatarUrl:'/images/headimg/132.jpg'
-    }
+    },
+    showAuthButton:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    //用户信息
+    this.setData({
+      userInfo: getApp().globalData.userInfo
+    })
+    //是否包含用户信息
+    console.log(getApp().globalData.userData)
+    if (getApp().globalData.userData && getApp().globalData.userData.keycode ){
+      console.log("1=1==2")
+      this.setData({
+        showAuthButton:false
+      })
+    }else{
+      console.log("1=1=======2")
+      this.setData({
+        showAuthButton: true
+      })
+    }
   },
 
   /**
@@ -29,7 +44,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**
@@ -110,6 +125,9 @@ Page({
     wx.navigateTo({
       url: '../../../self/components/mcharts/mcharts'
     })
+  },
+  authButtonClick:function(){
+    //授权按钮点击
   }
 
 })
