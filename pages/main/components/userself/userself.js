@@ -1,4 +1,5 @@
 // pages/main/components/userself/userself.js
+const dataServices = require('../../services/dataServices.js')
 Page({
 
   /**
@@ -6,8 +7,12 @@ Page({
    */
   data: {
     userInfo:{
-    },
-    showAuthButton:false
+    }, 
+    userData:null,
+    showAuthButton:false,
+    prepayorder:null,
+    prereceiveorder:null,
+    presendorder:null
   },
 
   /**
@@ -16,23 +21,49 @@ Page({
   onLoad: function (options) {
     //用户信息
     this.setData({
-      userInfo: getApp().globalData.userInfo
+      userInfo: getApp().globalData.userInfo,
+      userData: getApp().globalData.userData
     })
     //是否包含用户信息
-    console.log(getApp().globalData.userData)
     if (getApp().globalData.userData && getApp().globalData.userData.keycode ){
-      console.log("1=1==2")
       this.setData({
         showAuthButton:false
       })
     }else{
-      console.log("1=1=======2")
       this.setData({
         showAuthButton: true
       })
     }
   },
-
+  loadOrderState:function(){
+    var self = this
+    //加载订单情况
+    var postData = {
+      enterpriseid: getApp().globalData.enterpriseid,
+      usercode:this.data.userData.keycode
+    }
+    dataServices.orderstate(postData).then(ret=>{
+      if(ret){
+        if(ret.data){
+          if (ret.data.prepayorder){
+            this.setData({
+              prepayorder: ret.data.prepayorder
+            })
+          }
+          if (ret.data.presendorder) {
+            this.setData({
+              presendorder: ret.data.presendorder
+            })
+          }
+          if (ret.data.prereceiveorder) {
+            this.setData({
+              prereceiveorder: ret.data.prereceiveorder
+            })
+          }
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -44,7 +75,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    if(this.data.userData){
+      this.loadOrderState();
+    }
   },
 
   /**

@@ -1,3 +1,4 @@
+<van-toast id="van-toast" />
 <view class="container">
      <form bindsubmit="createOrder" report-submit="true">
      <view class="address-box" wx:if="{{isNeedLogistics > 0}}">
@@ -36,7 +37,7 @@
         <view class="row-box">
             <view class="row-label">备注</view>
             <view class="right-text">
-                <input name="remark" type="text" class="liuyan" placeholder="如需备注请输入" />
+                <input name="remark" bindinput="BindInputRemark" type="text" class="liuyan" placeholder="如需备注请输入" value="{{remark}}"  />
             </view>
         </view>
      </view>
@@ -72,9 +73,9 @@
 
      <view class="jiesuan-box">
         <view class="left-price">
-            <view class="total">合计：¥ {{allGoodsAndYunPrice - youhuijine}} + {{totalScoreToPay}} 积分</view>
+            <view class="total">合计：¥ {{totalMoney}} <view wx:if="{{totalPoints >0}}" style='display:inline-block;'>+ {{totalPoints}} 积分</view></view>
         </view>
-        <button class="to-pay-btn" formType="submit">提交订单</button>
+        <button class="to-pay-btn" bindtap="SubmitOrder">提交订单</button>
     </view>
     </form>
 </view>

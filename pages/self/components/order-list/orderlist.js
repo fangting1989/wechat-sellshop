@@ -1,4 +1,8 @@
 // pages/self/components/order-list/orderlist.js
+const dataServices = require('../../services/dataServices.js')
+const moment = require('../../../../utils/moment.min.js');
+var _ = require('../../../../utils/underscore.modified.js');
+const WebConfig = require('../../../../utils/config.js')
 Page({
 
   /**
@@ -7,7 +11,8 @@ Page({
   data: {
     statusType: ["待付款", "待发货", "待收货", "待评价", "已完成"],
     currentType: 0,
-    tabClass: ["", "", "", "", ""]
+    tabClass: ["", "", "", "", ""],
+    orderList:[],
   },
 
   /**
@@ -20,8 +25,37 @@ Page({
         currentType: curType
       });
     }
-    
-
+  },
+  loadOrderData:function(){
+    var self = this;
+    var state = 0;
+    console.log(this.data.currentType)
+    switch (this.data.currentType + ''){
+      case "0":state =1;break;
+      case "1": state = 2; break;
+      case "2": state = 3; break;
+      case "3": state = 4; break;
+      case "4": state = 99; break;
+    }
+    var postData = {
+      enterpriseid: getApp().globalData.enterpriseid,
+      orderisvalid:state,
+      memberid: getApp().globalData.userData.keycode,
+    }
+    dataServices.loadOrderData(postData).then(ret=>{
+      if(ret){
+        _.each(ret.data,item=>{
+          item.orderdate = moment(item.createdate).format('YYYY-MM-DD HH:mm:ss')
+          _.each(item.list,dditem=>{
+            dditem.imgpath = WebConfig.BaseUrl + WebConfig.RequestUrl.fileuploadpath + dditem.imgpath
+          })
+        })
+        self.setData({
+          orderList:ret.data
+        })
+        console.log(self.data.orderList)
+      }
+    })
   },
 
   /**
@@ -35,7 +69,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.loadOrderData();
   },
 
   /**

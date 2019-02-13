@@ -109,6 +109,8 @@ form{
     font-size: 26rpx;
     color: #999;
 }
+
+
 .peisong-way{
     width: 100%;
     background-color: #fff;

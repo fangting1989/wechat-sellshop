@@ -15,15 +15,15 @@
     </view>
     <van-row>
       <van-col span="6" bindtap="prepayorder">
-        <van-icon name="pending-payment" />
+        <van-icon name="pending-payment" info="{{prepayorder}}"  />
         <view>待付款</view>
       </van-col>
       <van-col span="6" bindtap="presendorder">
-        <van-icon name="exchange" />
+        <van-icon name="exchange" info="{{presendorder}}" />
         <view>待发货</view>
       </van-col>
-      <van-col span="6"  bindtap="prereceiveorder">
-        <van-icon name="logistics" />
+      <van-col span="6"  bindtap="prereceiveorder" >
+        <van-icon name="logistics"  info="{{prereceiveorder}}" />
         <view>待收货</view>
       </van-col>
       <van-col span="6" bindtap="finishorder">

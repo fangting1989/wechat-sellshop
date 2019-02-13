@@ -231,23 +231,6 @@ Page({
     return;
 
 
-    var self = this;
-    console.log(this.data.goodsList.list)
-    console.log(ProductList)
-    console.log(this.data.totalMoney);
-    var postData = {
-      list: ProductList,
-      enterpriseid: getApp().globalData.enterpriseid,
-      memberkeycode: this.data.userinfo.keycode,
-      membername: this.data.userinfo.membername,
-      address:'浙江杭州',
-      person:'zhangsan',
-      tel:'18657181338',
-    }
-    dataServices.CreateOrderByCart(postData).then(function (ret) {
-      if (ret) {
-        console.log(ret)
-      }
-    })
+    
   }
 })
